@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Digital — Solusi Digitalisasi untuk Semua Jenis Usaha</title>
+<meta name="description" content="Sistem Digital membantu UMKM, komunitas, dan berbagai jenis usaha mengelola bisnis lebih mudah, cepat, dan profesional.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+<!-- Markdown parser (for content coming from the CMS) -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Plus Jakarta Sans', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          navy: {
+            950: '#060B1A',
+            900: '#0A1330',
+            850: '#0D1838',
+            800: '#11204A',
+            700: '#16284F',
+          },
+          brand: {
+            50:  '#ECFDF5',
+            400: '#34D399',
+            500: '#16C78B',
+            600: '#0EA371',
+            700: '#0C8A5F',
+          },
+        },
+        boxShadow: {
+          soft: '0 10px 40px -10px rgba(0,0,0,0.08)',
+          card: '0 20px 50px -15px rgba(10,19,48,0.12)',
+          glow: '0 0 80px 0 rgba(52,211,153,0.15)',
+        },
+        borderRadius: {
+          '4xl': '2rem',
+          '5xl': '2.5rem',
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, h3, h4, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  /* Hero glow curves */
+  .hero-glow::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(52,211,153,0.18) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .hero-glow::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 50%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(59,130,246,0.20) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  .star-icon::before { content: ''; }
+
+  /* Device mockups */
+  .laptop-shell {
+    border-radius: 14px 14px 0 0;
+    background: linear-gradient(145deg, #1c2944, #0c1530);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55);
+  }
+  .laptop-base {
+    background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+    border-radius: 0 0 10px 10px;
+  }
+  .phone-shell {
+    border-radius: 34px;
+    background: linear-gradient(160deg, #1c2944, #0a1024);
+    box-shadow: 0 25px 50px -15px rgba(0,0,0,0.5);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .donut {
+    background: conic-gradient(#34D399 0% 45%, #38BDF8 45% 70%, #FBBF24 70% 88%, #F87171 88% 100%);
+  }
+
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+
+  /* Floating badges animation */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  .float-slow { animation: float-slow 5s ease-in-out infinite; }
+  .float-slow-delay { animation: float-slow 5s ease-in-out infinite; animation-delay: 1.2s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .float-slow, .float-slow-delay { animation: none; }
+  }
+
+  /* Mobile nav */
+  #mobile-menu { transition: max-height 0.3s ease, opacity 0.3s ease; }
+</style>
+</head>
+
+<body class="bg-white text-slate-800 antialiased pb-16 lg:pb-0">
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="#beranda" class="flex items-center gap-3 shrink-0">
+        <img data-gd-id="1IKrgMzcYMoVD4XKqRrR7Jd1JpAYJQTkx" data-gd-size="160" data-gd-fallback-text="SD"
+             alt="Logo Sistem Digital" class="w-10 h-10 rounded-xl object-contain shadow-soft">
+        <div class="leading-tight">
+          <p class="font-display font-bold text-navy-900 text-base">Sistem Digital</p>
+          <p class="text-[11px] text-slate-500 -mt-0.5">Solusi digital untuk semua</p>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#beranda" class="text-brand-600 font-semibold relative">
+          Beranda
+          <span class="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-500 rounded-full"></span>
+        </a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-navy-900 transition-colors">
+            Produk <i class="ph ph-caret-down text-xs mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-3 hidden group-hover:block w-56">
+            <div class="bg-white rounded-2xl shadow-card border border-slate-100 p-2">
+              <a href="#produk" class="block px-4 py-2.5 rounded-xl hover:bg-slate-50 text-sm">RT Digital</a>
+              <a href="#" class="block px-4 py-2.5 rounded-xl hover:bg-slate-50 text-sm">Laundry Digital</a>
+              <a href="#" class="block px-4 py-2.5 rounded-xl hover:bg-slate-50 text-sm">Bengkel Digital</a>
+              <a href="#" class="block px-4 py-2.5 rounded-xl hover:bg-slate-50 text-sm">Budidaya Digital</a>
+            </div>
+          </div>
+        </div>
+        <a href="#tutorial" class="hover:text-navy-900 transition-colors">Tutorial</a>
+        <a href="#blog" class="hover:text-navy-900 transition-colors">Blog</a>
+        <a href="#tentang" class="hover:text-navy-900 transition-colors">Tentang Kami</a>
+        <a href="#kontak" class="hover:text-navy-900 transition-colors">Kontak</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#masuk" class="px-5 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
+          Masuk
+        </a>
+        <a href="#beli" class="px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold flex items-center gap-2 shadow-soft transition-colors">
+          Beli Sekarang <i class="ph ph-shopping-cart-simple"></i>
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-navy-900">
+        <i class="ph ph-list text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden opacity-0">
+      <nav class="flex flex-col gap-1 pb-4 text-sm font-medium text-slate-600">
+        <a href="#beranda" class="px-2 py-2.5 rounded-lg text-brand-600 font-semibold">Beranda</a>
+        <a href="#produk" class="px-2 py-2.5 rounded-lg hover:bg-slate-50">Produk</a>
+        <a href="#tutorial" class="px-2 py-2.5 rounded-lg hover:bg-slate-50">Tutorial</a>
+        <a href="#blog" class="px-2 py-2.5 rounded-lg hover:bg-slate-50">Blog</a>
+        <a href="#tentang" class="px-2 py-2.5 rounded-lg hover:bg-slate-50">Tentang Kami</a>
+        <a href="#kontak" class="px-2 py-2.5 rounded-lg hover:bg-slate-50">Kontak</a>
+        <div class="flex gap-2 pt-3">
+          <a href="#masuk" class="flex-1 text-center px-4 py-2.5 rounded-xl border border-slate-200 font-semibold">Masuk</a>
+          <a href="#beli" class="flex-1 text-center px-4 py-2.5 rounded-xl bg-brand-500 text-white font-semibold">Beli Sekarang</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="beranda" class="relative hero-glow overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-navy-850 pb-24 lg:pb-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 lg:pt-20 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: copy -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white text-xs sm:text-sm font-medium mb-6">
+          <i class="ph-fill ph-star text-amber-400"></i>
+          Solusi Digital untuk Berbagai Kebutuhan
+        </div>
+
+        <h1 class="font-display font-bold text-white text-4xl sm:text-5xl leading-[1.1] mb-5">
+          Solusi Digitalisasi<br>
+          untuk <span class="text-brand-400">Semua Jenis Usaha</span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg max-w-md mb-7 leading-relaxed">
+          Membantu UMKM, komunitas, dan berbagai jenis usaha mengelola bisnis lebih mudah, cepat, dan profesional.
+        </p>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-2 mb-8 text-sm text-slate-200">
+          <span class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand-400"></i> Mudah Digunakan</span>
+          <span class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand-400"></i> Aman &amp; Terpercaya</span>
+          <span class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand-400"></i> Support Cepat</span>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mb-12">
+          <a href="#produk" class="px-6 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold flex items-center gap-2 shadow-glow transition-colors">
+            Lihat Produk <i class="ph ph-arrow-right"></i>
+          </a>
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="px-6 py-3.5 rounded-xl border border-white/20 text-white font-semibold flex items-center gap-2 hover:bg-white/5 transition-colors">
+            Konsultasi Gratis <i class="ph-fill ph-whatsapp-logo text-emerald-400"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/10">
+          <div>
+            <div class="flex items-center gap-2 text-brand-400 mb-1"><i class="ph-fill ph-users-three"></i><span class="text-xl font-display font-bold text-white">1000+</span></div>
+            <p class="text-xs text-slate-400">Pengguna Aktif</p>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 text-brand-400 mb-1"><i class="ph-fill ph-smiley"></i><span class="text-xl font-display font-bold text-white">99%</span></div>
+            <p class="text-xs text-slate-400">Kepuasan Pengguna</p>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 text-brand-400 mb-1"><i class="ph-fill ph-headset"></i><span class="text-xl font-display font-bold text-white">7 Hari</span></div>
+            <p class="text-xs text-slate-400">Support / Minggu</p>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 text-brand-400 mb-1"><i class="ph-fill ph-arrows-clockwise"></i><span class="text-xl font-display font-bold text-white">Rutin</span></div>
+            <p class="text-xs text-slate-400">Update Fitur Terbaru</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: device mockups -->
+      <div class="relative flex justify-center lg:justify-end">
+
+        <!-- dashed connector lines (desktop only) -->
+        <svg class="hidden lg:block absolute inset-0 w-full h-full text-white/20 pointer-events-none z-10" viewBox="0 0 560 480" fill="none">
+          <path d="M70 40 C 140 60, 170 90, 210 120" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <path d="M30 190 C 90 190, 150 190, 215 175" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <path d="M500 60 C 440 80, 400 110, 360 130" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <path d="M500 330 C 440 320, 410 290, 380 260" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+        </svg>
+
+        <!-- floating badges -->
+        <div class="float-slow hidden sm:flex absolute -top-2 left-4 lg:left-10 w-12 h-12 rounded-2xl bg-sky-500 shadow-card flex items-center justify-center text-white text-xl z-20">
+          <i class="ph-fill ph-storefront"></i>
+        </div>
+        <div class="float-slow-delay hidden sm:flex absolute top-1/3 -left-4 w-12 h-12 rounded-2xl bg-indigo-500 shadow-card flex items-center justify-center text-white text-xl z-20">
+          <i class="ph-fill ph-printer"></i>
+        </div>
+        <div class="float-slow hidden sm:flex absolute top-4 right-0 lg:-right-4 w-12 h-12 rounded-2xl bg-blue-600 shadow-card flex items-center justify-center text-white text-xl z-20">
+          <i class="ph-fill ph-users-three"></i>
+        </div>
+        <div class="float-slow-delay hidden sm:flex absolute bottom-10 right-0 w-12 h-12 rounded-2xl bg-emerald-500 shadow-card flex items-center justify-center text-white text-xl z-20">
+          <i class="ph-fill ph-chart-line-up"></i>
+        </div>
+
+        <!-- plant illustration -->
+        <svg class="hidden lg:block absolute -bottom-2 -left-10 w-16 h-20 text-emerald-400/80 z-10" viewBox="0 0 60 80" fill="none">
+          <path d="M22 78 L20 50 M22 78 L24 46" stroke="#6EE7B7" stroke-width="2"/>
+          <path d="M22 55 C8 50 6 32 14 22 C22 32 24 48 22 55Z" fill="#34D399"/>
+          <path d="M24 48 C34 40 38 24 32 14 C22 22 18 38 24 48Z" fill="#10B981"/>
+          <rect x="6" y="60" width="32" height="18" rx="4" fill="#475569"/>
+          <rect x="6" y="60" width="32" height="6" rx="3" fill="#64748B"/>
+        </svg>
+
+        <div class="relative w-full max-w-[560px] pt-6 z-20">
+          <!-- Real product screenshot: desktop (>=640px) -->
+          <img data-gd-id="1JvPQNBBqirfyTymGO0gwuRE4zw5VJOH2" data-gd-size="1200"
+               alt="Tampilan dashboard RT Digital di laptop dan ponsel"
+               class="hidden sm:block w-full h-auto drop-shadow-2xl">
+          <!-- Real product screenshot: mobile (<640px) -->
+          <img data-gd-id="1NdULlZ7G4EhdEhp69-oqOixbY68zeTaA" data-gd-size="800"
+               alt="Tampilan aplikasi RT Digital di ponsel"
+               class="block sm:hidden w-full max-w-[280px] mx-auto h-auto drop-shadow-2xl">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bottom curve into white section -->
+  <svg class="absolute bottom-0 left-0 w-full text-white" viewBox="0 0 1440 90" preserveAspectRatio="none" style="height:70px;">
+    <path d="M0,90 C400,0 1040,0 1440,90 L1440,90 L0,90 Z" fill="currentColor"/>
+  </svg>
+</section>
+
+<!-- ============ TRUSTED BY ============ -->
+<section class="bg-white pt-10 pb-16 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="text-slate-500 text-sm sm:text-base mb-6">Dipercaya oleh berbagai jenis usaha di seluruh Indonesia</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <span class="chip px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700"><i class="ph ph-storefront text-brand-500"></i> UMKM</span>
+      <span class="chip px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700"><i class="ph ph-wrench text-brand-500"></i> Bengkel</span>
+      <span class="chip px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700"><i class="ph ph-t-shirt text-brand-500"></i> Laundry</span>
+      <span class="chip px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700"><i class="ph ph-fish-simple text-brand-500"></i> Budidaya</span>
+      <span class="chip px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700"><i class="ph ph-users-three text-brand-500"></i> Komunitas</span>
+      <span class="chip px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700"><i class="ph ph-plant text-brand-500"></i> Tani</span>
+      <span class="chip px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700"><i class="ph ph-handshake text-brand-500"></i> Koperasi</span>
+      <span class="chip px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700"><i class="ph ph-dots-three text-brand-500"></i> dan lainnya</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT (RT Digital) ============ -->
+<section id="produk" class="px-6 pb-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="relative rounded-5xl bg-gradient-to-br from-navy-950 via-navy-900 to-navy-850 px-6 sm:px-10 lg:px-14 py-12 lg:py-16 overflow-hidden shadow-card">
+
+      <!-- slider arrows -->
+      <button id="slide-prev" aria-label="Sebelumnya" class="hidden lg:flex absolute -left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-card items-center justify-center text-navy-900 hover:bg-slate-50 z-20">
+        <i class="ph ph-caret-left"></i>
+      </button>
+      <button id="slide-next" aria-label="Berikutnya" class="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-card items-center justify-center text-navy-900 hover:bg-slate-50 z-20">
+        <i class="ph ph-caret-right"></i>
+      </button>
+
+      <div class="grid lg:grid-cols-[0.9fr_1.3fr_0.9fr] gap-10 items-center">
+
+        <!-- left copy -->
+        <div>
+          <span class="inline-block px-3 py-1.5 rounded-full bg-brand-500 text-white text-xs font-semibold mb-4">Produk Unggulan</span>
+          <h3 class="font-display font-bold text-white text-3xl mb-3">RT Digital</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">
+            Sistem administrasi modern untuk pengelolaan data warga, surat menyurat, keuangan, dan laporan secara digital.
+          </p>
+          <ul class="space-y-2.5 mb-6 text-sm text-slate-200">
+            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand-400"></i> Kelola data dengan mudah</li>
+            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand-400"></i> Laporan otomatis &amp; akurat</li>
+            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand-400"></i> Aman, cepat dan cloud-based</li>
+          </ul>
+          <a href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm transition-colors">
+            Lihat Detail Produk <i class="ph ph-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- middle mockup -->
+        <div class="relative flex justify-center" id="product-slides">
+
+          <div class="absolute -top-4 right-2 sm:right-10 bg-white rounded-xl shadow-card px-4 py-2.5 flex items-center gap-2 z-20">
+            <i class="ph-fill ph-star text-amber-400 text-lg"></i>
+            <div class="leading-tight">
+              <p class="text-sm font-bold text-navy-900">4.9/5</p>
+              <p class="text-[10px] text-slate-400">Rating Pengguna</p>
+            </div>
+          </div>
+
+          <div class="relative w-full max-w-[420px] pt-4">
+            <img data-gd-id="1JvPQNBBqirfyTymGO0gwuRE4zw5VJOH2" data-gd-size="900"
+                 alt="Tampilan dashboard RT Digital" class="hidden sm:block w-full h-auto drop-shadow-2xl">
+            <img data-gd-id="1NdULlZ7G4EhdEhp69-oqOixbY68zeTaA" data-gd-size="700"
+                 alt="Tampilan aplikasi RT Digital di ponsel" class="block sm:hidden w-full max-w-[240px] mx-auto h-auto drop-shadow-2xl">
+          </div>
+        </div>
+
+        <!-- right features -->
+        <div class="space-y-5 lg:pl-2">
+          <div class="flex gap-3 pb-4 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-brand-400 shrink-0"><i class="ph-fill ph-cursor-click"></i></div>
+            <div>
+              <p class="text-white font-semibold text-sm">Mudah Digunakan</p>
+              <p class="text-slate-400 text-xs mt-0.5">Antarmuka simpel dan intuitif</p>
+            </div>
+          </div>
+          <div class="flex gap-3 pb-4 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-brand-400 shrink-0"><i class="ph-fill ph-shield-check"></i></div>
+            <div>
+              <p class="text-white font-semibold text-sm">Aman &amp; Terpercaya</p>
+              <p class="text-slate-400 text-xs mt-0.5">Data terenkripsi &amp; backup berkala</p>
+            </div>
+          </div>
+          <div class="flex gap-3 pb-4 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-brand-400 shrink-0"><i class="ph-fill ph-device-mobile"></i></div>
+            <div>
+              <p class="text-white font-semibold text-sm">Akses di Mana Saja</p>
+              <p class="text-slate-400 text-xs mt-0.5">Bisa diakses kapan saja &amp; di mana saja</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-brand-400 shrink-0"><i class="ph-fill ph-headset"></i></div>
+            <div>
+              <p class="text-white font-semibold text-sm">Dukungan Lengkap</p>
+              <p class="text-slate-400 text-xs mt-0.5">Tim support siap membantu Anda</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- dots -->
+      <div class="flex justify-center gap-2 mt-10" id="slide-dots">
+        <button class="w-2 h-2 rounded-full bg-brand-400" data-slide="0"></button>
+        <button class="w-2 h-2 rounded-full bg-white/25" data-slide="1"></button>
+        <button class="w-2 h-2 rounded-full bg-white/25" data-slide="2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS + CTA ============ -->
+<section class="px-6 pb-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10">
+      <h2 class="font-display font-bold text-2xl sm:text-3xl text-navy-900 mb-2">Apa kata mereka?</h2>
+      <div class="flex justify-center gap-1 text-amber-400 text-lg">
+        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-5">
+
+      <!-- testimonial cards -->
+      <div class="lg:col-span-2 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+        <div class="flex gap-1 text-amber-400 text-xs mb-3"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">RT Digital sangat membantu kami dalam mengelola data warga dan surat menyurat. Semua jadi lebih cepat dan rapi.</p>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-sky-400 to-blue-600"></div>
+          <div>
+            <p class="text-xs font-semibold text-navy-900">Budi Santoso</p>
+            <p class="text-[10px] text-slate-400">Ketua RT 05 / RW 02</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+        <div class="flex gap-1 text-amber-400 text-xs mb-3"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">Aplikasinya mudah digunakan, laporan otomatis, pekerjaan jauh lebih ringan. Recommended!</p>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-rose-400 to-pink-600"></div>
+          <div>
+            <p class="text-xs font-semibold text-navy-900">Siti Aminah</p>
+            <p class="text-[10px] text-slate-400">Pemilik LaundryKita</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+        <div class="flex gap-1 text-amber-400 text-xs mb-3"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">Fitur keuangan di RT Digital sangat membantu kami mencatat transaksi secara rapi dan aman.</p>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-600"></div>
+          <div>
+            <p class="text-xs font-semibold text-navy-900">Agus Wijaya</p>
+            <p class="text-[10px] text-slate-400">Pemilik Toko Bangunan</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+        <div class="flex gap-1 text-amber-400 text-xs mb-3"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">Supportnya cepat dan responsif, bener-bener membantu sekali.</p>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-violet-400 to-purple-600"></div>
+          <div>
+            <p class="text-xs font-semibold text-navy-900">Dewi Lestari</p>
+            <p class="text-[10px] text-slate-400">Pengelola Koperasi</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA card -->
+      <div class="lg:col-span-4 relative rounded-2xl bg-gradient-to-br from-blue-700 via-navy-900 to-navy-950 p-6 flex flex-col justify-between overflow-hidden min-h-[220px]">
+        <i class="ph-fill ph-rocket-launch absolute -bottom-4 -right-4 text-white/10 text-[110px]"></i>
+        <div class="relative z-10">
+          <h3 class="font-display font-bold text-white text-lg mb-2">Siap Digitalisasi Usaha Anda?</h3>
+          <p class="text-slate-300 text-xs leading-relaxed">Bergabunglah bersama ribuan pengguna yang merasakan manfaat Sistem Digital.</p>
+        </div>
+        <div class="relative z-10 flex gap-2 mt-4">
+          <a href="#produk" class="px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-xs font-semibold transition-colors">Mulai Sekarang</a>
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white shrink-0">
+            <i class="ph-fill ph-whatsapp-logo"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="kontak" class="bg-navy-950 pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-[1.3fr_0.8fr_0.8fr_0.8fr_1.3fr] gap-10 pb-10 border-b border-white/10">
+
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img data-gd-id="1IKrgMzcYMoVD4XKqRrR7Jd1JpAYJQTkx" data-gd-size="160" data-gd-fallback-text="SD"
+               alt="Logo Sistem Digital" class="w-10 h-10 rounded-xl object-contain">
+          <p class="font-display font-bold text-white text-base">Sistem Digital</p>
+        </div>
+        <p class="text-slate-400 text-sm mb-5 max-w-xs">Solusi digital untuk semua kebutuhan usaha Anda.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-300"><i class="ph ph-facebook-logo"></i></a>
+          <a href="#" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-300"><i class="ph ph-instagram-logo"></i></a>
+          <a href="#" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-300"><i class="ph ph-tiktok-logo"></i></a>
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-300"><i class="ph ph-whatsapp-logo"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-white font-semibold text-sm mb-4">Produk</p>
+        <ul class="space-y-2.5 text-sm text-slate-400">
+          <li><a href="#" class="hover:text-brand-400">RT Digital</a></li>
+          <li><a href="#" class="hover:text-brand-400">Laundry Digital</a></li>
+          <li><a href="#" class="hover:text-brand-400">Bengkel Digital</a></li>
+          <li><a href="#" class="hover:text-brand-400">Budidaya Digital</a></li>
+          <li><a href="#" class="hover:text-brand-400">Lihat Semua Produk</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-white font-semibold text-sm mb-4">Tutorial</p>
+        <ul class="space-y-2.5 text-sm text-slate-400">
+          <li><a href="#" class="hover:text-brand-400">Pusat Tutorial</a></li>
+          <li><a href="#" class="hover:text-brand-400">RT Digital</a></li>
+          <li><a href="#" class="hover:text-brand-400">Laundry Digital</a></li>
+          <li><a href="#" class="hover:text-brand-400">Bengkel Digital</a></li>
+          <li><a href="#" class="hover:text-brand-400">Budidaya Digital</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-white font-semibold text-sm mb-4">Company</p>
+        <ul class="space-y-2.5 text-sm text-slate-400">
+          <li><a href="#tentang" class="hover:text-brand-400">Tentang Kami</a></li>
+          <li><a href="#" class="hover:text-brand-400">Karir</a></li>
+          <li><a href="#" class="hover:text-brand-400">Kebijakan Privasi</a></li>
+          <li><a href="#" class="hover:text-brand-400">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-white font-semibold text-sm mb-4">Kontak</p>
+        <ul class="space-y-2.5 text-sm text-slate-400 mb-5">
+          <li class="flex items-center gap-2"><i class="ph ph-whatsapp-logo"></i> WhatsApp</li>
+          <li class="flex items-center gap-2"><i class="ph ph-envelope-simple"></i> Email</li>
+          <li class="flex items-center gap-2"><i class="ph ph-instagram-logo"></i> Instagram</li>
+          <li class="flex items-center gap-2"><i class="ph ph-youtube-logo"></i> YouTube</li>
+        </ul>
+        <p class="text-slate-300 text-sm mb-3">Dapatkan update terbaru seputar produk, fitur dan tips digitalisasi.</p>
+        <form id="newsletter-form" class="flex gap-2">
+          <input type="email" required placeholder="Masukkan email Anda" class="flex-1 min-w-0 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-400">
+          <button type="submit" class="px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold whitespace-nowrap transition-colors">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 text-xs text-slate-500">
+      <p>© 2026 Sistem Digital. All rights reserved.</p>
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-slate-300">Sitemap</a>
+        <a href="#" class="hover:text-slate-300">Privacy</a>
+        <a href="#" class="hover:text-slate-300">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE BOTTOM TAB BAR ============ -->
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-slate-100 shadow-[0_-8px_24px_-12px_rgba(10,19,48,0.15)]">
+  <div class="grid grid-cols-5">
+    <a href="#beranda" class="flex flex-col items-center justify-center gap-1 py-2.5 text-brand-600">
+      <i class="ph-fill ph-house text-lg"></i>
+      <span class="text-[10px] font-semibold">Beranda</span>
+    </a>
+    <a href="#produk" class="flex flex-col items-center justify-center gap-1 py-2.5 text-slate-400">
+      <i class="ph ph-storefront text-lg"></i>
+      <span class="text-[10px] font-medium">Produk</span>
+    </a>
+    <a href="#tutorial" class="flex flex-col items-center justify-center gap-1 py-2.5 text-slate-400">
+      <i class="ph ph-book-open text-lg"></i>
+      <span class="text-[10px] font-medium">Tutorial</span>
+    </a>
+    <a href="#blog" class="flex flex-col items-center justify-center gap-1 py-2.5 text-slate-400">
+      <i class="ph ph-article text-lg"></i>
+      <span class="text-[10px] font-medium">Blog</span>
+    </a>
+    <a href="#masuk" class="flex flex-col items-center justify-center gap-1 py-2.5 text-slate-400">
+      <i class="ph ph-user-circle text-lg"></i>
+      <span class="text-[10px] font-medium">Akun</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- ===================  API INTEGRATION  ======================= -->
+<!-- ============================================================ -->
+<script>
+/**
+ * GAS_URL: Tempel URL Web App Google Apps Script Anda di sini.
+ * Contoh: https://script.google.com/macros/s/AKfycb.../exec
+ */
+const GAS_URL = "PASTE_YOUR_GAS_WEB_APP_URL_HERE";
+
+/* ---------- Google Drive image loader with fallback chain ---------- */
+/* Drive sering memblokir hotlink tergantung setting share, jadi kita coba
+   beberapa format URL berurutan sampai salah satu berhasil dimuat. */
+function gdUrls(id, size) {
+  return [
+    `https://lh3.googleusercontent.com/d/${id}=w${size}`,
+    `https://drive.google.com/thumbnail?id=${id}&sz=w${size}`,
+    `https://drive.google.com/uc?export=view&id=${id}`,
+  ];
+}
+document.querySelectorAll('img[data-gd-id]').forEach((img) => {
+  const id = img.dataset.gdId;
+  const size = img.dataset.gdSize || '1000';
+  const fallbackText = img.dataset.gdFallbackText;
+  const urls = gdUrls(id, size);
+  let i = 0;
+  function tryNext() {
+    if (i >= urls.length) {
+      // Semua format gagal: ganti dengan placeholder agar tidak tampil ikon rusak
+      if (fallbackText) {
+        const div = document.createElement('div');
+        div.className = img.className.replace('object-contain', '') +
+          ' bg-gradient-to-br from-brand-400 to-sky-500 flex items-center justify-center text-white font-bold font-display text-sm';
+        div.innerText = fallbackText;
+        img.replaceWith(div);
+      } else {
+        img.style.display = 'none';
+      }
+      return;
+    }
+    img.src = urls[i++];
+  }
+  img.addEventListener('error', tryNext);
+  tryNext();
+});
+
+/* ---------- Mobile menu ---------- */
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+menuToggle.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  if (menuOpen) {
+    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+    mobileMenu.style.opacity = '1';
+    menuToggle.innerHTML = '<i class="ph ph-x text-xl"></i>';
+  } else {
+    mobileMenu.style.maxHeight = '0px';
+    mobileMenu.style.opacity = '0';
+    menuToggle.innerHTML = '<i class="ph ph-list text-xl"></i>';
+  }
+});
+
+/* ---------- Product slider dots (cosmetic, ready to wire to real slides) ---------- */
+const dots = document.querySelectorAll('#slide-dots button');
+let currentSlide = 0;
+function setActiveDot(index) {
+  dots.forEach((d, i) => {
+    d.classList.toggle('bg-brand-400', i === index);
+    d.classList.toggle('w-2', i !== index);
+    d.classList.toggle('w-6', i === index);
+    d.classList.toggle('bg-white/25', i !== index);
+  });
+}
+dots.forEach((dot, i) => dot.addEventListener('click', () => { currentSlide = i; setActiveDot(i); }));
+document.getElementById('slide-next')?.addEventListener('click', () => {
+  currentSlide = (currentSlide + 1) % dots.length;
+  setActiveDot(currentSlide);
+});
+document.getElementById('slide-prev')?.addEventListener('click', () => {
+  currentSlide = (currentSlide - 1 + dots.length) % dots.length;
+  setActiveDot(currentSlide);
+});
+setActiveDot(0);
+
+/* ---------- Newsletter form (placeholder submit) ---------- */
+document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Terima kasih telah subscribe! (Hubungkan form ini ke action createSubscriber jika diperlukan)');
+  e.target.reset();
+});
+
+/* ---------- GAS Headless CMS API helpers ---------- */
+
+async function apiGet(action) {
+  if (GAS_URL.includes('PASTE_YOUR_GAS_WEB_APP_URL_HERE')) {
+    console.warn('GAS_URL belum diatur. Lewati pemanggilan API:', action);
+    return null;
+  }
+  try {
+    const res = await fetch(`${GAS_URL}?api=true&action=${action}`);
+    const json = await res.json();
+    if (json.status === 'success') return json.data;
+    console.error('API error:', json.message);
+    return null;
+  } catch (err) {
+    console.error('Fetch gagal:', err);
+    return null;
+  }
+}
+
+async function getProducts() { return apiGet('getProducts'); }
+async function getBlog() { return apiGet('getBlog'); }
+async function getTutorials() { return apiGet('getTutorials'); }
+async function getSettings() { return apiGet('getSettings'); }
+
+async function createOrder(orderData) {
+  if (GAS_URL.includes('PASTE_YOUR_GAS_WEB_APP_URL_HERE')) {
+    console.warn('GAS_URL belum diatur. Order tidak terkirim.', orderData);
+    return null;
+  }
+  try {
+    const res = await fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // hindari preflight CORS pada GAS
+      body: JSON.stringify({
+        action: 'createOrder',
+        data: orderData,
+      }),
+    });
+    const json = await res.json();
+    return json;
+  } catch (err) {
+    console.error('Gagal membuat order:', err);
+    return null;
+  }
+}
+
+/* ---------- Example: populate WhatsApp number & QRIS from Settings sheet ---------- */
+async function applySettings() {
+  const settings = await getSettings();
+  if (!settings) return;
+  const map = {};
+  settings.forEach((row) => { map[row.config_key] = row.config_value; });
+
+  if (map.WA_NUMBER) {
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach((a) => {
+      a.href = `https://wa.me/${map.WA_NUMBER}`;
+    });
+  }
+}
+
+/* ---------- Example: render Produk Unggulan dynamically when API is ready ---------- */
+async function applyFeaturedProduct() {
+  const products = await getProducts();
+  if (!products || !products.length) return;
+
+  const featured = products.find((p) => p.status === 'Active') || products[0];
+
+  const titleEl = document.querySelector('#produk h3');
+  const summaryEl = document.querySelector('#produk h3 + p');
+  if (titleEl) titleEl.textContent = featured.name;
+  if (summaryEl && featured.summary) summaryEl.textContent = featured.summary;
+
+  // Markdown description, jika dibutuhkan di halaman detail produk:
+  // const html = marked.parse(featured.description || '');
+}
+
+/* Jalankan integrasi setelah GAS_URL diisi */
+window.addEventListener('DOMContentLoaded', () => {
+  applySettings();
+  applyFeaturedProduct();
+});
+</script>
+</body>
+</html>
